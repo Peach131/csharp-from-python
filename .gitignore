@@ -40,12 +40,16 @@ C#学习总控台.md
 # 与本课程无关的个人文件
 WSL故障修复报告.md
 
-# 我已经写过的练习答案（第 00-05 课）
-# 仓库里应该只有空白骨架，让人自己动手写
-CSharp课程/第00课-C#程序的基本结构/Lesson00Practice/Lesson00Practice.cs
-CSharp课程/第01课-变量与类型/Lesson01Practice/Lesson01Practice.cs
-CSharp课程/第02课-运算符与流程控制/Lesson02Practice/Lesson02Practice.cs
-CSharp课程/第03课-循环与数组/Lesson03Practice/Lesson03Practice.cs
-CSharp课程/第04课-方法与参数/Lesson04Practice/Lesson04Practice.cs
-CSharp课程/第05课-类与对象基础/Lesson05Practice/Lesson05Practice.cs
+# 我自己练习答案的备份目录（本地存放，不进仓库）
+_我的练习答案备份/
+
+# ============================================================
+#  说明：第 00-05 课的 Lesson*Practice.cs
+#
+#  这些文件在仓库里放的是【空白骨架】（只有 TODO 提示，没有答案），
+#  所以我自己的答案不会出现在公开仓库里。
+#
+#  我的答案备份在仓库外的 `_我的练习答案备份/`（上面已忽略）。
+#  本地工作区里跑的是我自己的答案版本。
+# ============================================================
 
