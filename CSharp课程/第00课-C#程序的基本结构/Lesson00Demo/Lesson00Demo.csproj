@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- ===================================================================
+       这是一个 C# 项目的配置文件（.csproj）。
+       你可以把它理解成 Python 的 requirements.txt + 项目设置 的合体。
+       初学者现在只需要知道下面这几行是什么意思。
+       =================================================================== -->
+
+  <PropertyGroup>
+    <!-- 这个项目会编译成一个可以运行的程序（Exe = executable 可执行文件）。
+         如果写 Library，就是编译成一个给别人引用的类库，不能直接运行。 -->
+    <OutputType>Exe</OutputType>
+
+    <!-- 目标框架：用哪个版本的 .NET。
+         你的电脑装的是 .NET 9，所以写 net9.0。 -->
+    <TargetFramework>net9.0</TargetFramework>
+
+    <!-- 自动帮你加上常用的 using（比如 using System;）
+         所以在这个项目里，你不写 using System; 也能用 Console。 -->
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- 开启"可空引用类型"检查：编译器会警告你"这个变量可能是 null"。
+         第 3 课会详细讲，现在保持开启就好。 -->
+    <Nullable>enable</Nullable>
+
+    <!-- 程序集名称（生成出来的 dll / exe 叫什么名字）。
+         不写的话默认等于项目名。 -->
+    <AssemblyName>Lesson00Demo</AssemblyName>
+  </PropertyGroup>
+
+</Project>

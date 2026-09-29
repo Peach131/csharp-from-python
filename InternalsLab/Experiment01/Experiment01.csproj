@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Experiments</RootNamespace>
+    <AssemblyName>Experiments</AssemblyName>
+    <!-- 允许 unsafe 仅用于 sizeof(T)，不要用它写指针代码 -->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!-- 打开所有警告：底层学习必须对警告敏感 -->
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>9999</WarningLevel>
+    <AnalysisLevel>latest</AnalysisLevel>
+  </PropertyGroup>
+
+</Project>
