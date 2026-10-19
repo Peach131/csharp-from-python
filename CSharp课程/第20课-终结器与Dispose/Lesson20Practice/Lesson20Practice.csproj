@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    第 20 课的练习项目
+    ★ 你的代码写在 Lesson20Practice.cs 里，按 TODO 1~5 顺序做
+    ★ 本课用到 System.Runtime.InteropServices.Marshal（在 BCL 里，不需要 NuGet，也不需要 unsafe）
+  -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Lesson20Practice</AssemblyName>
+    <RootNamespace>LessonPractice</RootNamespace>
+    <StartupObject>LessonPractice.Lesson20Practice</StartupObject>
+  </PropertyGroup>
+
+</Project>

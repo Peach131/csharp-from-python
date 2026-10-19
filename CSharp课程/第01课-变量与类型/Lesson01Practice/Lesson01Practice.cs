@@ -22,15 +22,21 @@ namespace LessonPractice
             //     分数：88.5
             //     等级：B
             //     是否及格：True
-            // 【提示】声明格式：类型 名字 = 值;
-            //         string studentName = "qzl";
-            //         Console.WriteLine($"姓名：{studentName}");
 
             Console.WriteLine("--- TODO 1 ---");
 
             // ↓↓↓ 在这里写你的代码 ↓↓↓
 
-
+            string studentName = "qzl";
+            int studentAge = 25;
+            double score = 88.5;
+            char grade = 'B';
+            bool isPassed = true;
+            Console.WriteLine($"姓名:{studentName}");
+            Console.WriteLine($"年龄:{studentAge}");
+            Console.WriteLine($"分数:{score}");
+            Console.WriteLine($"等级:{grade}");
+            Console.WriteLine($"是否及格:{isPassed}");
 
 
             Console.WriteLine();
@@ -52,6 +58,10 @@ namespace LessonPractice
             Console.WriteLine("--- TODO 2 ---");
 
             // ↓↓↓ 在这里写你的代码 ↓↓↓
+            double d = 0.1 + 0.2;
+            decimal m = 0.1m + 0.2m;
+            Console.WriteLine($"double  :{d}");
+            Console.WriteLine($"decimal  :{m}");
 
 
 
@@ -74,17 +84,19 @@ namespace LessonPractice
             // 【提示】if (int.TryParse(inputA, out int a)) { ... } else { ... }
             // 【考察点】★ 两个输入都要测！只测合法的那个不算完成
             //          （把 int.Parse(inputB) 替换进去试试，看程序怎么崩）
-
             Console.WriteLine("--- TODO 3 ---");
-
             string inputA = "25";
             string inputB = "abc";
-
             // ↓↓↓ 在这里写你的代码 ↓↓↓
-
-
-
-
+            if (int.TryParse(inputA, out int a))
+            {
+                Console.WriteLine($"转换成功{a}");
+            }
+            else
+            {
+                Console.WriteLine($"转换失败");
+            }
+            
             Console.WriteLine();
 
 
@@ -106,10 +118,10 @@ namespace LessonPractice
             int population = 1234567;
 
             // ↓↓↓ 在这里写你的代码 ↓↓↓
-
-
-
-
+            Console.WriteLine($"price{price:F}");
+            Console.WriteLine($"rate{rate:P1}");
+            Console.WriteLine($"population{population:N0}");
+            
             Console.WriteLine();
 
 
@@ -121,22 +133,15 @@ namespace LessonPractice
             //   2. 按逗号拆分成 3 部分      → .Split(',')
             //   3. 把第 2 部分转成 int      → int.TryParse
             //   4. 打印成一句话
-            // 【预期输出】
-            //     张三 今年 25 岁，来自 北京
-            // 【提示】string trimmed = record.Trim();
-            //         string[] parts = trimmed.Split(',');
-            //         // parts[0]=姓名  parts[1]=年龄  parts[2]=城市
-            // 【考察点】这是"解析一行数据"的标准套路，以后读文件、读 CSV 都靠它
-
             Console.WriteLine("--- TODO 5 ---");
 
             string record = "  张三,25,北京  ";
 
             // ↓↓↓ 在这里写你的代码 ↓↓↓
-
-
-
-
+            string newRecord = record.Trim();
+            string[] oldRecord = newRecord.Split(',');
+            int age = int.TryParse(oldRecord[1], out int result) ? result : 0;
+            Console.WriteLine($"我是{oldRecord[0]}，今年{age}岁，来自于{oldRecord[2]}");
             Console.WriteLine();
 
 
@@ -168,10 +173,24 @@ namespace LessonPractice
 
             // ↓↓↓ 在这里写你的代码 ↓↓↓
 
-
-
-
+            Console.WriteLine("BMI 计算器");
+            Console.Write("请输入身高（米）：");
+            string hight =  Console.ReadLine();
+            if (!double.TryParse(hight, out double h))
+            {
+                Console.WriteLine("身高输入不合法");
+                return;
+            }
+            Console.Write("请输入体重（千克）：");
+            string weight =  Console.ReadLine();
+            if (!double.TryParse(weight, out double w))
+            {
+                Console.WriteLine("体重输入不合法");
+                return;
+            }
             Console.WriteLine();
+            
+            Console.WriteLine($"你的 BMI 是：{w/(h*h):F}");
 
 
             // ================================================================

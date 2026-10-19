@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    第 17 课的练习项目
+    ★ 本课独立成项目，不影响其他课
+  -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Lesson17Practice</AssemblyName>
+    <RootNamespace>LessonPractice</RootNamespace>
+    <StartupObject>LessonPractice.Lesson17Practice</StartupObject>
+  </PropertyGroup>
+
+</Project>

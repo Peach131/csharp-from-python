@@ -28,10 +28,15 @@ namespace LessonPractice
             Console.WriteLine("--- TODO 1 ---");
 
             // ↓↓↓ 在这里写你的代码 ↓↓↓
-
-
-
-
+            Console.Write("1 到 10：");
+            for (int i = 1; i <= 10; i++) { Console.Write($"{i} "); }
+            Console.WriteLine(); 
+            Console.Write("10 到 1（倒着数）：");
+            for (int i=10;i>0;i--) {Console.Write($"{i} ");}
+            Console.WriteLine(); 
+            Console.Write("1 到 20 之间的所有偶数：");
+            // ★ 起始值必须是 2：题目要的是"1 到 20 之间"，0 不在这个区间里
+            for (int i = 2; i <= 20; i += 2) { Console.Write($"{i} "); }
             Console.WriteLine();
 
 
@@ -52,10 +57,13 @@ namespace LessonPractice
             Console.WriteLine("--- TODO 2 ---");
 
             // ↓↓↓ 在这里写你的代码 ↓↓↓
-
-
-
-
+            int sum = 0;
+            int product = 1;
+            for (int i = 1; i <= 100; i++) { sum += i; }
+            for (int i = 1; i <= 10; i++) { product *= i; }
+            Console.WriteLine($"计算 1 + 2 + ... + 100: {sum}");
+            Console.WriteLine($"计算 10 的阶乘（1 × 2 × ... × 10）: {product}");
+            
             Console.WriteLine();
 
 
@@ -81,10 +89,24 @@ namespace LessonPractice
             int[] scores = { 88, 92, 76, 95, 81 };
 
             // ↓↓↓ 在这里写你的代码 ↓↓↓
-
-
-
-
+            Console.WriteLine($"成绩：[{string.Join(", ", scores)}]");
+            int total = 0;
+            int max = scores[0];
+            for (int i = 0; i < scores.Length; i++)
+            {
+                if (scores[i] > max)
+                {
+                    max = scores[i];
+                }
+            }
+            for (int i = 0; i < scores.Length; i++)
+            {
+                total += scores[i];
+            }
+            double avg = (double)total / scores.Length;
+            Console.WriteLine($"总分：{total}");
+            Console.WriteLine($"最高分：{max}");
+            Console.WriteLine($"平均分：{avg:F}");
             Console.WriteLine();
 
 
@@ -112,11 +134,52 @@ namespace LessonPractice
             Console.WriteLine("--- TODO 4 ---");
 
             // ↓↓↓ 在这里写你的代码 ↓↓↓
+            // ── 第 1 步：及格人数 ────────────────────────────────
+            // 计数器初值 0，每命中一个就 +1
+            int passCount = 0;
+            for (int i = 0; i < scores.Length; i++)
+            {
+                if (scores[i] >= 60)
+                {
+                    passCount++;
+                }
+            }
 
+            // ── 第 2 步：优秀人数 ────────────────────────────────
+            // 和上一步是同一个套路，只是条件从 >= 60 换成 >= 90
+            // ★ 要点：一个统计任务配一个独立的计数器，不要试图用一个变量算两件事
+            int excellentCount = 0;
+            for (int i = 0; i < scores.Length; i++)
+            {
+                if (scores[i] >= 90)
+                {
+                    excellentCount++;
+                }
+            }
 
-
-
+            // ── 第 3 步：不及格分数名单 ──────────────────────────
+            // ★ 本 TODO 的核心：标志位 any 的读写位置
+            //   循环【内】：找到不及格的 → 打印它 + 把 any 置为 true
+            //   循环【外】：循环彻底结束后，才用 any 判断"到底找到过没有"
+            bool any = false;
+            Console.Write("不及格分数：");
+            for (int i = 0; i < scores.Length; i++)
+            {
+                if (scores[i] < 60)
+                {
+                    Console.Write($"{scores[i]} ");
+                    any = true;          // ← 写在 if 里面，只对不及格的元素执行
+                }
+            }
+            if (!any)                    // ← ★ 写在 for 的【外面】
+            {
+                Console.Write("（无）");
+            }
             Console.WriteLine();
+
+            // ── 第 4 步：统一输出（标签与课文预期逐字对齐）────────
+            Console.WriteLine($"及格人数：{passCount}");
+            Console.WriteLine($"优秀人数：{excellentCount}");
 
 
             // ================================================================
@@ -142,10 +205,13 @@ namespace LessonPractice
             Console.WriteLine("--- TODO 5 ---");
 
             // ↓↓↓ 在这里写你的代码 ↓↓↓
-
-
-
-
+            for (int i = 5; i >= 1; i--)        // 外层：行数从 5 减到 1
+            {
+                for (int j = 1; j <= i; j++)    // 内层：这行打印 i 个
+                { Console.Write("*"); }
+                Console.WriteLine();
+            }
+            
             Console.WriteLine();
 
 
@@ -188,6 +254,66 @@ namespace LessonPractice
             int[] grades = { 88, 92, 76, 95, 81 };
 
             // ↓↓↓ 在这里写你的代码 ↓↓↓
+
+            // ── 第 1 步：先找出最高分 ────────────────────────────
+            // ★ 为什么先找最高分？因为打印时要"边打印边判断谁该标 ★"，
+            //   判断需要拿 maxGrade 来比，所以它必须在打印【之前】就算出来。
+            int maxGrade = grades[0];
+            for (int i = 1; i < grades.Length; i++)
+            {
+                if (grades[i] > maxGrade)
+                {
+                    maxGrade = grades[i];
+                }
+            }
+
+            // ── 第 2 步：打印表头 + 逐行打印（顺便把 4 项统计一起算了）──
+            // ★ 核心思路：一趟循环同时干 4 件事（打印、累加总分、跟踪最低分、数及格人数）
+            //   这叫"一次遍历多个统计"。比写 4 个独立循环更高效，也更不容易写漏。
+            Console.WriteLine("========== 成绩报告 ==========");
+
+            int totalGrade = 0;                        // 累加器：初值 0
+            int minGrade = grades[0];                  // ★ 最小值初值也取第一个元素，不能取 0
+            int passNumber = 0;                        // 及格人数计数器
+
+            for (int i = 0; i < grades.Length; i++)
+            {
+                totalGrade += grades[i];               // ① 累加总分
+
+                if (grades[i] < minGrade)              // ② 跟踪最低分
+                {
+                    minGrade = grades[i];
+                }
+
+                if (grades[i] >= 60)                   // ③ 数及格人数
+                {
+                    passNumber++;
+                }
+
+                // ④ 三元运算符：这一行该不该跟 ★ ？
+                //    等于最高分 → 拿到 "  ★"；否则 → 拿到空字符串 ""
+                // ★ 注意 ★ 前面留两个空格，这样"95  ★"和"88"的分数位才对得齐
+                string mark = grades[i] == maxGrade ? "  ★" : "";
+                Console.WriteLine($"{names[i]}：{grades[i]}{mark}");
+            }
+
+            Console.WriteLine("------------------------------");
+
+            // ── 第 3 步：打印统计结果 ────────────────────────────
+            double averageGrade = (double)totalGrade / grades.Length;   // ★ 先转 double 再除
+
+            // 及格率：(double)及格人数 / 总人数 * 100
+            // ★ 为什么必须先转 double？
+            //   如果写 passNumber / grades.Length，整数除法会先把 5/5 砍成 1，
+            //   再乘 100 得 100 —— 这次【恰好】对；但换成自测数据 4/5 就会得到 0，
+            //   而不是 80.0。先转 double 才在任何数据下都正确。
+            double passRate = (double)passNumber / grades.Length * 100;
+
+            Console.WriteLine($"总分：{totalGrade}");
+            Console.WriteLine($"平均分：{averageGrade:F2}");
+            Console.WriteLine($"最高分：{maxGrade}");
+            Console.WriteLine($"最低分：{minGrade}");
+            Console.WriteLine($"及格率：{passRate:F1}%");
 
 
 

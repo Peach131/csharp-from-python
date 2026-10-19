@@ -26,13 +26,13 @@ namespace LessonPractice
             int b = 5;
 
             // ↓↓↓ 在这里写你的代码 ↓↓↓
-
-
-
-
+            Console.WriteLine($"{a} + {b} = {a + b}");
+            Console.WriteLine($"{a} - {b} = {a - b}");
+            Console.WriteLine($"{a} * {b} = {a * b}");
+            Console.WriteLine($"{a} / {b} = {a / b}");
+            Console.WriteLine($"{a} % {b} = {a % b}");
             Console.WriteLine();
-
-
+            
             // ================================================================
             // TODO 2 ｜ 整数除法的陷阱（本课重点）
             // ================================================================
@@ -53,10 +53,10 @@ namespace LessonPractice
             Console.WriteLine("--- TODO 2 ---");
 
             // ↓↓↓ 在这里写你的代码 ↓↓↓
-
-
-
-
+            Console.WriteLine($"7 / 2 直接除: {7 / 2}");
+            Console.WriteLine($"7 / 2 转换后: {(double)7 / 2}");
+            Console.WriteLine($"平均分：totalScore = 266，count = 3直接除: {266 / 3}");
+            Console.WriteLine($"平均分：totalScore = 266，count = 3转换后double: {(double)266 / 3}");
             Console.WriteLine();
 
 
@@ -78,10 +78,12 @@ namespace LessonPractice
             int number = 42;
 
             // ↓↓↓ 在这里写你的代码 ↓↓↓
-
-
-
-
+            if (number % 2 == 0){Console.WriteLine($"{number} 是偶数");}
+            else {Console.WriteLine($"{number} 是奇数");}
+            
+            if (number % 3 == 0){Console.WriteLine($"{number} 能被 3 整除");}
+            else {Console.WriteLine($"{number} 不能被 3 整除");}
+            
             Console.WriteLine();
 
 
@@ -99,12 +101,10 @@ namespace LessonPractice
             Console.WriteLine("--- TODO 4 ---");
 
             int year = 2024;
-
             // ↓↓↓ 在这里写你的代码 ↓↓↓
-
-
-
-
+            bool isLeap = (year % 4 == 0) && (year % 100 != 0 || year % 400 == 0);
+            if (isLeap){Console.WriteLine($"{year} 是闰年");}
+            else{Console.WriteLine($"{year} 不是闰年");}
             Console.WriteLine();
 
 
@@ -125,12 +125,15 @@ namespace LessonPractice
             Console.WriteLine("--- TODO 5 ---");
 
             double bmi = 26.5;
-
             // ↓↓↓ 在这里写你的代码 ↓↓↓
-
-
-
-
+            string level = bmi switch
+            {
+                >= 28 => "肥胖",
+                >= 24 => "超重",
+                >= 18.5 => "正常",
+                _    => "偏瘦"          
+            };
+            Console.WriteLine(level);     
             Console.WriteLine();
 
 
@@ -163,12 +166,21 @@ namespace LessonPractice
             //     （两处精度不同会导致"显示的税"和"实际扣的税"对不上）
 
             Console.WriteLine("--- TODO 6 ---");
-
             // ↓↓↓ 在这里写你的代码 ↓↓↓
-
-
-
-
+            double tax = 0;
+            Console.Write($"请输入你的月收入（元）:");
+            string incomes = Console.ReadLine();
+            if (!double.TryParse(incomes, out double income))
+            {
+                Console.WriteLine($"非法输入,将【退出】");
+                return;
+            }
+            if (income <= 5000)       { tax = 0; }
+            else if (income <= 10000) { tax = (income - 5000) * 0.03; }
+            else if (income <= 20000 ) { tax = (income - 5000) * 0.10;}
+            else if (income > 20000 ) { tax = (income - 5000) * 0.20;}
+            Console.WriteLine($"应纳税额：{tax:F2} 元");
+            Console.WriteLine($"税后收入：{income - tax:F2} 元");
             Console.WriteLine();
 
 

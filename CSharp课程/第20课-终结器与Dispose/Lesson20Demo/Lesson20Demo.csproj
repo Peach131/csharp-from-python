@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    第 20 课的示例项目
+    ★ 本课独立成项目，不影响其他课
+    ★ 本课用的是 System.Runtime.InteropServices.Marshal（AllocHGlobal / FreeHGlobal），
+      它们在 net9.0 的 BCL 里，不需要装 NuGet 包，也不需要 unsafe
+  -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Lesson20Demo</AssemblyName>
+    <RootNamespace>LessonPractice</RootNamespace>
+    <StartupObject>LessonPractice.Lesson20Demo</StartupObject>
+  </PropertyGroup>
+
+</Project>
